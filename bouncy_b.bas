@@ -1,0 +1,22 @@
+10 poke 53281,1:print "{light blue}{home}"
+20 poke 53280,7:poke 53281,6
+21 for cnt=1 to 250
+22 poke 1024+int(rnd(1)*1000),160
+24 next cnt
+30 x=1:y=1:dx=1:dy=1
+40 x=x+dx:y=y+dy
+41 if peek(1024+x+40*y)<>160 then 43
+42 poke 53281,1:dx=-dx:rem crash 
+43 if peek(1024+x+40*y)=160 then  poke 55296+x+40*y,1:poke53281,6
+50 if x > 38 then dx=-1
+52 if x< 1 then dx=1
+54 if y> 23 then dy=-1
+55 if y < 1 then dy=1
+56 if dx=1 and dy=1 then ch=77
+57 if dx=-1 and dy=-1 then ch=77
+58 if dx=-1 and dy=1 then ch=78
+59 if dx=1 and dy=-1 then ch=78
+60 poke 1024+x+40*y,81
+70 for wt=1 to 25:next wt
+75 poke 1024+x+40*y,ch
+80 goto 40
