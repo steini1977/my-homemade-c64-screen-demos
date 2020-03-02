@@ -1,4 +1,4 @@
-10 poke 53281,1:print "ZS"
+10 poke 53281,1:print "{lightblue}{clear screen}"
 20 poke 53280,7:poke 53281,6
 21 for cnt=1 to 250
 22 poke 1024+int(rnd(1)*1000),160
