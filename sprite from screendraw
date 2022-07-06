@@ -1,0 +1,42 @@
+rem #commodore64 #basic #sprite
+10 poke 53248+0,100:rem x pos
+12 poke 53248+1,120:rem y pos
+14 poke 53248+21,1:rem enable sprite
+16 poke 2040,13
+17 goto 40
+20 for n=0 to 62:poke 832+n,129:next
+40 print chr$(147);
+53 print"@@@@                   "
+54 print"@@@@@                  "
+55 print"@@@@@@                 "
+56 print"@@@@@@@                "
+57 print"@@@@@@@@               "
+60 print"@@@@@@@@@              "
+61 print"      @@@              "
+62 print"@@@   @@@              "
+63 print"@@@@@@@@@@@@@@@@@@@@@@ "
+64 print"@@@@@@@@@@@@@@@@@@@@   "
+65 print"@@@@@@@@@@@@@@@@@@@@@@ "
+66 print"@@@   @@@              "
+67 print"      @@@              "
+70 print"@@@@@@@@@              "
+71 print"@@@@@@@@               "
+72 print"@@@@@@@                "
+73 print"@@@@@@                 "
+74 print"@@@@@                  "
+100 bit=7:byte=0:addr=0
+101 for y=0 to 20
+110 for x=0 to 23
+120 n=peek(1024+x+40*y)
+130 if n=0 then byte=byte+2^bit
+135 if n<>0 then byte=byte and not 2^bit
+140 bit=bit-1:if bit<0 then goto 150
+145 goto 160
+150 poke 832+addr,byte:addr=addr+1
+155 bit=7:byte=0
+160 next x:next y
+199 end
+200 for n=0 to 999
+205 p=peek(1024+n)
+210 if p=81 then poke 1024+n,0
+215 next
